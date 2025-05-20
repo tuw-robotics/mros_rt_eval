@@ -1,0 +1,29 @@
+{
+  "name": "ROS Humble Gazebo DevContainer",
+  "dockerFile": "Dockerfile",
+
+  "runArgs": [
+    "--network=host",
+    "-e", "DISPLAY",
+    "-e", "QT_X11_NO_MITSHM=1",
+    "--privileged",
+    "-v", "/tmp/.X11-unix:/tmp/.X11-unix"
+  ],
+
+  "workspaceFolder": "/workspace",
+  "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=cached",
+
+  "remoteUser": "root",
+
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "bash",
+        "terminal.integrated.shellArgs.linux": ["-l"]
+      }
+    }
+  },
+
+  "postCreateCommand": "./.devcontainer/setup.sh",
+  "postStartCommand": "./.devcontainer/start.sh"
+}

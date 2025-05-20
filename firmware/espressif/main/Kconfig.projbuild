@@ -1,0 +1,66 @@
+# Kconfig.projbuild
+
+menu "Application-specific settings"
+
+    config PUB_TARGET_MS
+        int "Publish interval (ms)"
+        default 100
+        help
+          How often to publish (in milliseconds).
+    
+    config PUBLISH_QOS_RELIABLE
+        bool "Use RELIABLE QoS for publisher"
+        default n
+        help
+          If enabled, use a reliable publisher; otherwise best_effort.
+    
+    config SYNC_TRIALS
+        int "Number of sync trials"
+        default 10000
+        help
+          Total number of publish trials to run.
+    
+    config WARMUP_TRIALS
+        int "Number of warmup trials"
+        default 2
+        help
+          Number of initial trials to discard in the evaluation.
+    
+    config TOPIC_NAME
+        string "Topic name to publish to"
+        default "latency_usec"
+        help
+          The ROS2 topic on which to publish the timestamp messages.
+    
+    config NODE_NAME
+        string "ROS node name"
+        default "latency_node"
+        help
+          The node name for this benchmark.
+
+    config MROS_PING_TIMEOUT_MS
+        int "Ping timeout (ms)"
+        default 1000
+        help
+          Timeout for pinging the agent.
+
+    config MROS_MAX_PING_ATTEMPTS
+        int "Max ping attempts"
+        default 3
+        help
+          Maximum number of attempts to ping the agent.
+
+    config MROS_MAX_TIME_SYNC_TIMEOUT_MS
+        int "Max time sync timeout (ms)"
+        default 5000
+        help
+          Timeout for synchronizing time with the agent.
+
+    config MROS_UART_TRANSPORT_BAUDRATE
+        int "UART transport baudrate"
+        default 115200
+        help
+          Baudrate for the UART transport.
+    
+endmenu # Application-specific settings
+    
